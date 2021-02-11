@@ -3,10 +3,10 @@
  */
 
 var express = require("express");
-var https = require("https");
+var http = require("http");
 var path = require("path");
 var handlebars = require("express3-handlebars");
-var fs = require("fs");
+
 var index = require("./routes/index");
 var project = require("./routes/project");
 // Example route
@@ -39,11 +39,11 @@ app.get("/", index.view);
 app.get("/project/:id", project.projectInfo);
 // Example route
 // app.get('/users', user.list);
-const options = {
+/*const options = {
   key: fs.readFileSync("key.pem"),
   cert: fs.readFileSync("cert.pem"),
-};
+};*/
 
-https.createServer(options, app).listen(app.get("port"), function () {
+https.createServer(app).listen(app.get("port"), function () {
   console.log("Express server listening on port " + app.get("port"));
 });
